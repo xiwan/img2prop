@@ -1,0 +1,31 @@
+{
+  "id": "pen",
+  "frame": "side",
+  "origin": [970, 450],
+  "scale": [1115, 0.15],
+  "colors": {
+    "resin":  { "ref": ["#1f4a3a", "#2f6a52", "#173a2d", "#5f9a80", "#12302a"], "game": "#1f4a3a" },
+    "gold":   { "ref": ["#c9a24a", "#e8cd7a", "#8f6e2a"], "game": "#c9a24a" },
+    "silver": { "ref": ["#c8ccd2", "#e6e9ee", "#9aa0a8"], "game": "#c8ccd2" },
+    "black":  { "ref": ["#1b1c20", "#3a3c42", "#111216"], "game": "#1b1c20" }
+  },
+  "parts": [
+    { "id": "cap",     "kind": "lathe", "color": "resin", "box": [130, 380, 518, 520], "axis": 450, "group": "cap",
+      "open": [
+        { "name": "cap", "move": [-50, 0, 0], "span": [0, 0.15] },
+        { "name": "cap", "move": [0, 120, 0], "axis": "v", "deg": 180, "span": [0.15, 0.45] },
+        { "name": "cap", "move": [886, 0, 0], "span": [0.45, 0.7] },
+        { "name": "cap", "move": [0, -120, 0], "span": [0.7, 0.85] },
+        { "name": "cap", "move": [-80, 0, 0], "span": [0.85, 1] }
+      ] },
+    { "id": "capBand", "kind": "lathe", "color": "gold",  "box": [516, 380, 564, 520], "axis": 450, "group": "cap" },
+    { "id": "clip",    "kind": "plate", "color": "gold",  "box": [172, 425, 482, 475], "d": 60, "t": 8, "on": "cap" },
+    { "id": "barrel",  "kind": "lathe", "color": "resin", "box": [562, 380, 892, 520], "axis": 450, "group": "barrel" },
+    { "id": "ring",    "kind": "lathe", "color": "gold",  "box": [890, 380, 910, 520], "axis": 450, "group": "barrel" },
+    { "id": "section", "kind": "lathe", "color": "black", "box": [906, 380, 1041, 520], "axis": 450 },
+    { "id": "feed",    "kind": "lathe", "color": "black", "x": [1040, 1222], "axis": 450, "r": [[1040, 27], [1120, 24], [1180, 14], [1222, 5]] },
+    { "id": "nib",     "kind": "plate", "color": "gold",  "mask": ["gold", "silver", "black"], "box": [1042, 400, 1262, 500], "d": 28, "t": 8, "paint": true, "on": "feed", "explode": "+w" }
+  ],
+  "sockets": { "tip": [1255, 450, 28] },
+  "game": { "scale": [1.6, 1.6, 1.2] }
+}

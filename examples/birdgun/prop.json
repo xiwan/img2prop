@@ -1,0 +1,30 @@
+{
+  "id": "birdgun",
+  "frame": "side",
+  "origin": [400, 410],
+  "scale": [1182, 1.25],
+  "colors": {
+    "wood": { "ref": [[150, 450], [700, 390], [400, 400], [200, 480], [900, 385]], "game": "#4a2c1a" },
+    "iron": { "ref": [[900, 362], [1150, 365], [900, 342], [1150, 350]], "game": "metal" },
+    "steel": { "ref": [[65, 450], [665, 355], [495, 340]], "game": "#6a6c72" },
+    "brass": { "ref": [[1070, 365], [470, 372], [1075, 345]], "game": "#b08a40" },
+    "cord": { "ref": [[643, 400], [642, 420]], "game": "#c85a1a" }
+  },
+  "parts": [
+    { "id": "stock", "kind": "sweep", "color": "wood", "box": [78, 300, 1070, 530], "x": [78, 1066], "n": 2.5,
+      "top": [[500, 360], [1066, 360]], "bottom": [[420, 412], [515, 410]],
+      "w": [[78, 44], [300, 34], [500, 34], [1066, 28]] },
+    { "id": "buttPlate", "kind": "sweep", "color": "steel", "mask": ["steel", "iron"], "box": [48, 380, 84, 530], "w": 44 },
+    { "id": "barrel", "kind": "lathe", "color": "iron", "x": [455, 1232], "axis": 357, "r": [[455, 18], [1232, 17]], "bore": 9 },
+    { "id": "sight", "kind": "box", "color": "iron", "at": [1210, 337], "size": [24, 8, 8] },
+    { "id": "bead", "kind": "ball", "color": "brass", "box": [394, 352, 412, 372] },
+    { "id": "ring", "kind": "lathe", "color": "steel", "mask": ["steel", "iron"], "box": [648, 328, 682, 380], "axis": 356 },
+    { "id": "band", "kind": "sweep", "color": "brass", "box": [1052, 330, 1092, 400], "w": 46 },
+    { "id": "cock", "kind": "plate", "color": "steel", "mask": ["steel", "iron"], "box": [478, 308, 508, 368], "t": 8, "d": 20, "own": true },
+    { "id": "serpentine", "kind": "plate", "color": "brass", "box": [452, 362, 525, 396], "t": 6, "d": 22 },
+    { "id": "guard", "kind": "ring", "color": "steel", "mask": ["steel", "iron"], "box": [424, 410, 501, 452], "tube": 8 },
+    { "id": "cord", "kind": "plate", "color": "cord", "box": [628, 360, 662, 438], "t": 6 }
+  ],
+  "sockets": { "muzzle": [1232, 356], "pan": [500, 335, 18], "fuse": [643, 432] },
+  "game": { "scale": [1.4, 1.4, 1], "grip": "two", "support": [0, 0, 0.4] }
+}

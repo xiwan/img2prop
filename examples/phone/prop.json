@@ -1,0 +1,34 @@
+{
+  "id": "phone",
+  "frame": "front",
+  "origin": [700, 450],
+  "scale": [760, 0.1466],
+  "colors": {
+    "frame":  { "ref": ["#8a8780"], "game": "#8a8780" },
+    "back":   { "ref": ["#c9c3b8"], "game": "#c9c3b8" },
+    "module": { "ref": ["#e4e0d8"], "game": "#e4e0d8" },
+    "lens":   { "ref": ["#3b3d43", "#2c2e33", "#14161b", "#0d0e12"], "game": "#2a2c31" },
+    "flash":  { "ref": ["#efe3c0"], "game": "#efe3c0" },
+    "screen": { "ref": ["#000000"], "game": "#141824" }
+  },
+  "parts": [
+    { "id": "body",    "kind": "plate", "color": "frame",  "mask": ["*"], "box": [517, 60, 883, 840], "t": 43 },
+    { "id": "back",    "kind": "plate", "color": "back",   "mask": ["back", "module", "lens", "flash"], "box": [520, 72, 880, 828], "d": 21, "t": 5.2 },
+    { "id": "screen",  "kind": "plate", "color": "screen", "d": -21, "t": 5.2,
+      "pts": [[873, 774], [869.5, 791.6], [859.5, 806.5], [844.6, 816.5], [827, 820], [573, 820], [555.4, 816.5], [540.5, 806.5], [530.5, 791.6], [527, 774], [527, 126], [530.5, 108.4], [540.5, 93.5], [555.4, 83.5], [573, 80], [827, 80], [844.6, 83.5], [859.5, 93.5], [869.5, 108.4], [873, 126]] },
+
+    { "id": "module",  "kind": "plate", "color": "module", "mask": ["module", "lens", "flash"], "box": [533, 86, 729, 282], "d": 26.5, "t": 6 },
+    { "id": "lens_tl", "kind": "cyl",   "color": "lens",  "box": [543, 98, 627, 182],  "dir": "w", "d": 34.5, "len": 10, "seg": 16 },
+    { "id": "lens_bl", "kind": "cyl",   "color": "lens",  "box": [543, 186, 627, 270], "dir": "w", "d": 34.5, "len": 10, "seg": 16 },
+    { "id": "lens_r",  "kind": "cyl",   "color": "lens",  "box": [631, 142, 715, 226], "dir": "w", "d": 34.5, "len": 10, "seg": 16 },
+    { "id": "flash",   "kind": "cyl",   "color": "flash", "box": [675, 97, 705, 127],  "dir": "w", "d": 32, "len": 5.2, "seg": 8 },
+    { "id": "lidar",   "kind": "cyl",   "color": "lens",  "box": [676, 242, 704, 270], "dir": "w", "d": 32, "len": 5.2, "seg": 8 },
+
+    { "id": "action",  "kind": "box",   "color": "frame", "at": [883, 220, 0],   "size": [10, 40, 16] },
+    { "id": "vol_up",  "kind": "box",   "color": "frame", "at": [883, 310, 0],   "size": [10, 70, 16] },
+    { "id": "vol_dn",  "kind": "box",   "color": "frame", "at": [883, 397, 0],   "size": [10, 70, 16] },
+    { "id": "power",   "kind": "box",   "color": "frame", "at": [517, 352.5, 0], "size": [10, 115, 16] }
+  ],
+  "sockets": { "screen": [700, 450, -24], "flash": [690, 112, 35] },
+  "game": { "scale": [1.5, 1.5, 1.5] }
+}

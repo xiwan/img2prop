@@ -1,0 +1,20 @@
+{
+  "id": "medChest",
+  "frame": "front",
+  "origin": [640, 627],
+  "scale": [423, 0.26],
+  "colors": {
+    "wood": { "ref": [[500, 400], [700, 450], [640, 550], [460, 300]], "game": "#5c3a22" },
+    "brass": { "ref": [[640, 280], [445, 190], [835, 600]], "game": "#b08a40" },
+    "iron": { "ref": [[640, 95], [565, 130]], "game": "#2a2a2e" }
+  },
+  "parts": [
+    { "id": "chest", "kind": "box", "color": "wood", "at": [640.5, 384.5, 0], "size": [423, 447, 275], "paint": true },
+    { "id": "footL", "kind": "box", "color": "wood", "at": [464, 617.5, 0], "size": [71, 19, 275], "paint": true },
+    { "id": "footR", "kind": "box", "color": "wood", "at": [816, 617.5, 0], "size": [72, 19, 275], "paint": true },
+    { "id": "lock", "kind": "box", "color": "brass", "box": [595, 220, 690, 340], "size": [80, 110, 12], "at": [641, 281, 140] },
+    { "id": "handle", "kind": "plate", "color": "iron", "box": [555, 84, 727, 168], "t": 14 },
+    { "id": "knobL", "kind": "ball", "color": "brass", "box": [543, 147, 565, 173] },
+    { "id": "knobR", "kind": "ball", "color": "brass", "box": [713, 147, 735, 173] }
+  ]
+}

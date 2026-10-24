@@ -1,0 +1,35 @@
+{
+  "id": "motorcycle",
+  "frame": "side",
+  "origin": [693, 760],
+  "scale": [1039, 2.1],
+  "colors": {
+    "tire":  { "ref": [[210, 600], [360, 740], [1030, 450], [1030, 745]], "game": "#23242a" },
+    "metal": { "ref": [[700, 500], [700, 680], [960, 300], [330, 660]], "game": "metal" },
+    "body":  { "ref": [[700, 400], [700, 455], [220, 500], [1030, 430]], "game": "#a8352a" },
+    "seat":  { "ref": [[450, 415], [450, 460]], "game": "#4a3a2c" },
+    "lamp":  { "ref": [[1002, 340], [1002, 392]], "game": "#e8c94c" }
+  },
+  "parts": [
+    { "id": "rear_rim",     "kind": "cyl",   "color": "metal", "box": [248, 488, 472, 712],  "dir": "w", "len": 56, "seg": 16, "own": true },
+    { "id": "rear_tire",    "kind": "ring",  "color": "tire",  "box": [196, 436, 524, 764],  "tube": 48, "own": true },
+    { "id": "front_rim",    "kind": "cyl",   "color": "metal", "box": [918, 488, 1142, 712], "dir": "w", "len": 56, "seg": 16, "own": true, "on": "handlebar" },
+    { "id": "front_tire",   "kind": "ring",  "color": "tire",  "box": [866, 436, 1194, 764], "tube": 48, "own": true, "on": "handlebar" },
+
+    { "id": "engine",       "kind": "sweep", "color": "metal", "box": [592, 464, 812, 706], "x": [596, 806], "w": 150 },
+    { "id": "tank",         "kind": "sweep", "color": "body",  "box": [584, 368, 840, 474], "x": [588, 836], "w": 130 },
+    { "id": "seat",         "kind": "sweep", "color": "seat",  "box": [328, 394, 590, 476], "x": [336, 584], "w": 108 },
+    { "id": "down_tube",    "kind": "sweep", "color": "metal", "box": [826, 384, 934, 470], "x": [830, 932], "w": 26 },
+
+    { "id": "rear_fender",  "kind": "plate", "color": "body",  "box": [170, 408, 340, 604],  "t": 58 },
+    { "id": "front_fender", "kind": "plate", "color": "body",  "box": [840, 408, 1220, 604], "t": 58, "on": "handlebar" },
+
+    { "id": "fork",         "kind": "sweep", "color": "metal", "y": [330, 600],
+      "pts": [[330, 938, 966, 28], [600, 1016, 1044, 28]], "d": 46, "mirror": true, "on": "handlebar" },
+    { "id": "handlebar",    "kind": "cyl",   "color": "metal", "at": [960, 306], "r": 13, "len": 190, "dir": "w",
+      "open": { "name": "steer", "pivot": [1030, 600, 0], "axis": [-78, 270, 0], "deg": 28 } },
+    { "id": "lamp",         "kind": "ball",  "color": "lamp",  "box": [950, 310, 1054, 414], "on": "handlebar" }
+  ],
+  "sockets": { "rider": [460, 400], "lamp": [1002, 362, 50] },
+  "game": { "scale": [1.1, 1.1, 1.1] }
+}

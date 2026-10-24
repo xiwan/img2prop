@@ -1,0 +1,35 @@
+{
+  "id": "flintlock",
+  "frame": "side",
+  "origin": [300, 388],
+  "scale": [1163, 0.34],
+  "colors": {
+    "wood": { "ref": [[160, 500], [650, 360], [330, 330], [230, 420], [200, 535], [180, 375], [800, 320]], "game": "#4a2c1a" },
+    "brass": { "ref": [[700, 272], [1211, 300], [70, 440]], "game": "#b08a40" },
+    "iron": { "ref": [[1000, 300], [1000, 333], [900, 272], [1100, 285]], "game": "metal" },
+    "steel": { "ref": [[430, 335], [620, 322], [470, 420], [480, 214]], "game": "#5a5c62" }
+  },
+  "parts": [
+    { "id": "stock", "kind": "sweep", "color": "wood", "mask": ["*"], "box": [72, 280, 940, 560], "x": [72, 937], "n": 2.5,
+      "top": [[380, 300], [460, 288], [600, 292], [800, 300], [937, 302]], "bottom": [[395, 384], [610, 377], [860, 372]],
+      "w": [[76, 113], [100, 130], [160, 134], [250, 113], [300, 100], [430, 103], [610, 96], [800, 89], [880, 86], [937, 55]] },
+    { "id": "barrel", "kind": "lathe", "color": "iron", "x": [842, 1215], "axis": 298.5, "r": [[842, 42], [1215, 40]], "bore": 19 },
+    { "id": "chamber", "kind": "lathe", "color": "brass", "box": [600, 240, 850, 345], "x": [612, 842], "axis": 298.5, "edge": "top", "own": true },
+    { "id": "band", "kind": "lathe", "color": "brass", "box": [1190, 240, 1225, 350], "axis": 298.5, "bore": 38, "boreDepth": 15 },
+    { "id": "sight", "kind": "box", "color": "iron", "box": [1175, 240, 1200, 262] },
+    { "id": "lock", "mask": ["steel", "iron"], "kind": "plate", "color": "steel", "box": [362, 300, 724, 368], "t": 9, "d": 48 },
+    { "id": "cock", "mask": ["steel", "iron"], "kind": "plate", "color": "steel", "box": [452, 194, 532, 322], "t": 14, "d": 56, "own": true,
+      "open": { "name": "cock", "pivot": [497, 316], "deg": 38 } },
+    { "id": "frizzen", "mask": ["steel", "iron"], "kind": "plate", "color": "steel", "box": [530, 248, 612, 300], "t": 14, "d": 56 },
+    { "id": "pan", "kind": "box", "color": "steel", "at": [540, 304, 58], "size": [34, 10, 20] },
+    { "id": "tang", "mask": ["steel", "iron"], "kind": "plate", "color": "iron", "box": [386, 262, 416, 297], "t": 12 },
+    { "id": "guard", "mask": ["steel", "iron"], "kind": "ring", "color": "steel", "box": [405, 375, 548, 466], "tube": 10 },
+    { "id": "trigger", "mask": ["steel", "iron"], "kind": "plate", "color": "steel", "box": [438, 378, 478, 450], "t": 10 },
+    { "id": "cap", "kind": "sweep", "color": "brass", "box": [50, 380, 80, 510], "w": 100 },
+    { "id": "clip", "kind": "box", "color": "iron", "box": [826, 345, 856, 385] },
+    { "id": "lockScrew", "kind": "cyl", "color": "brass", "box": [698, 320, 718, 340], "d": 54, "len": 6 },
+    { "id": "buttScrew", "kind": "cyl", "color": "brass", "box": [150, 443, 172, 463], "d": 66, "len": 6, "mirror": true }
+  ],
+  "sockets": { "muzzle": [1217, 298.5], "pan": [540, 300, 58] },
+  "game": { "scale": [1.5, 1.5, 1.1], "grip": "one", "support": [0.05, -0.01, 0.01] }
+}

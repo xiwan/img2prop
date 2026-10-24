@@ -1,0 +1,19 @@
+{
+  "id": "liquor",
+  "frame": "front",
+  "origin": [656, 660],
+  "scale": [584, 0.16],
+  "colors": {
+    "clay": { "ref": [[500, 450], [800, 400], [656, 600], [472, 317]], "game": "#5c3220" },
+    "red": { "ref": [[656, 420], [600, 430]], "game": "#c02a22" },
+    "cloth": { "ref": [[600, 120], [700, 230], [560, 200]], "game": "#e8dcb8" },
+    "string": { "ref": [[656, 157], [600, 155]], "game": "#9a6a30" },
+    "foot": { "ref": [[656, 645], [600, 640]], "game": "#8a4a2a" }
+  },
+  "parts": [
+    { "id": "body", "kind": "lathe", "color": "clay", "mask": ["clay", "red"], "box": [425, 195, 890, 628], "vertical": true, "axis": 656, "paint": true },
+    { "id": "foot", "kind": "lathe", "color": "foot", "box": [535, 618, 778, 664], "vertical": true, "axis": 656 },
+    { "id": "cloth", "kind": "lathe", "color": "cloth", "mask": ["cloth", "string"], "box": [450, 70, 862, 290], "vertical": true, "axis": 656, "paint": true }
+  ],
+  "game": { "scale": [1.2, 1.2, 1.2] }
+}

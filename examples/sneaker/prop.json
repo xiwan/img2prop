@@ -1,0 +1,20 @@
+{
+  "id": "sneaker",
+  "frame": "side",
+  "origin": [712, 760],
+  "scale": [961, 0.31],
+  "colors": {
+    "white": { "ref": ["#f4f2ec", "#d4d0c6"], "game": "#efece4" },
+    "red":   { "ref": ["#c8232c", "#9c1b22"], "game": "#c0222b" },
+    "black": { "ref": ["#2a2a30", "#1a1a1e"], "game": "#222226" }
+  },
+  "parts": [
+    { "id": "upper_rear",  "kind": "sweep", "color": "white", "mask": ["*"], "paint": true, "box": [226, 250, 901, 689],  "x": [232, 900],  "n": 3, "d": 185, "mirror": true, "group": "upper",
+      "w": [[232, 220], [330, 262], [600, 286], [900, 330], [1050, 300], [1150, 230], [1190, 160]] },
+    { "id": "upper_front", "kind": "sweep", "color": "white", "mask": ["*"], "paint": true, "box": [899, 250, 1200, 689], "x": [900, 1186], "n": 3, "d": 185, "mirror": true, "group": "upper",
+      "w": [[232, 220], [330, 262], [600, 286], [900, 330], [1050, 300], [1150, 230], [1190, 160]] },
+    { "id": "sole",        "kind": "sweep", "color": "white", "mask": ["*"], "paint": true, "box": [226, 689, 1200, 762], "x": [234, 1196], "n": 4, "d": 185, "mirror": true, "on": "upper_rear", "explode": "-v",
+      "w": [[234, 240], [330, 282], [600, 306], [900, 350], [1050, 320], [1150, 250], [1196, 180]] }
+  ],
+  "game": { "scale": [1.3, 1.3, 1.3] }
+}

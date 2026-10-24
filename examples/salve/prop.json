@@ -1,0 +1,17 @@
+{
+  "id": "salve",
+  "frame": "front",
+  "origin": [656, 646],
+  "scale": [571, 0.12],
+  "colors": {
+    "porcelain": { "ref": [[600, 450], [760, 450], [700, 600], [620, 220]], "game": "#e8e4da" },
+    "blue": { "ref": [[620, 274], [700, 274]], "game": "#3a5a8a" },
+    "red": { "ref": [[650, 100], [700, 150], [600, 180], [720, 120]], "game": "#a02a1a" }
+  },
+  "parts": [
+    { "id": "body", "kind": "lathe", "color": "porcelain", "box": [500, 160, 815, 650], "vertical": true, "axis": 656 },
+    { "id": "band", "kind": "lathe", "color": "blue", "box": [590, 261, 724, 287], "vertical": true, "axis": 656, "grow": 3 },
+    { "id": "cloth", "kind": "lathe", "color": "red", "box": [540, 68, 774, 222], "vertical": true, "axis": 656 }
+  ],
+  "game": { "scale": [1.2, 1.2, 1.2] }
+}

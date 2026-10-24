@@ -1,0 +1,128 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>README 配图</title>
+<style>
+  body { margin: 0; background: #131216; color: #ddd; font: 13px/1.4 system-ui, "PingFang SC", sans-serif; }
+  #sheet { display: grid; gap: 10px; padding: 14px; width: max-content; background: #131216; }
+  .cell { background: #1d1c22; border-radius: 6px; overflow: hidden; }
+  .stage { position: relative; }
+  .label { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 10px 8px; }
+  .label b { color: #eee; font-weight: 600; font-size: 14px; letter-spacing: 0.02em; }
+  .label span { color: #77757f; font: 11px ui-monospace, monospace; }
+  #strip { display: flex; gap: 0; width: max-content; }
+</style></head>
+<body>
+<div id="sheet"></div>
+<div id="strip"></div>
+<script type="importmap">{ "imports": { "three": "/node_modules/three/build/three.module.js" } }</script>
+<script type="module">
+// mode=gallery：所有例子一张图（同一个机位、同一套灯），出 docs/gallery.png
+// mode=gif：几件的开合动起来，拼成一条，编成 GIF（scripts/gif.js），出 docs/open.gif
+import * as THREE from 'three';
+import { buildProp } from '/runtime/prop.ts';
+import { PreviewStage } from '/render/PreviewStage.ts';
+import { encodeGif } from '/scripts/gif.js';
+
+const q = new URL(location.href).searchParams;
+const mode = q.get('mode') ?? 'gallery';
+const list = await (await fetch('/__examples')).json();
+const byId = new Map(list.map((e) => [e.id, e]));
+// 名字和排的顺序：铳、刀、瓶罐、箱子、近一点的东西
+const NAMES = {
+  flintlock: '燧发短铳', three_eyed: '三眼铳', hand_cannon: '手铳', birdgun: '鸟铳', knife: '短刀',
+  salve: '药瓶', liquor: '酒坛', medChest: '药箱', suitcase: '皮箱', briefcase: '密码箱', gate: '大门',
+  pen: '钢笔', keyboard: '机械键盘', phone: '手机', sneaker: '高帮球鞋', motorcycle: '摩托车',
+};
+const yawOf = (d) => (d.frame === 'front' ? 0.5 : d.frame === 'top' ? 0.35 : 2.2);
+
+/** 一个格子：建模型、摆进去、按 open 走过的范围取景 */
+async function cell(parent, e, w, h, scale, opts = {}) {
+  const data = await (await fetch(e.data)).json();
+  const box = document.createElement('div');
+  box.className = 'stage';
+  box.style.width = `${w}px`;
+  box.style.height = `${h}px`;
+  parent.append(box);
+  const stage = new PreviewStage(box, {}, 'felt');
+  stage.autoSpin = 0;
+  const model = buildProp(data, { split: true, map: e.map ?? undefined });
+  stage.setContent(model.group);
+  stage.place(model.group);
+  stage.turntable.rotation.y = opts.yaw ?? yawOf(data);
+  const s = stage.settings;
+  s.pitchDeg = opts.pitch ?? 28;
+  s.baseHeight = h / scale;
+  const all = new THREE.Box3();
+  for (const t of opts.action ? [0, 0.25, 0.5, 0.75, 1] : [0]) {
+    model.pose(0, opts.action ? { [opts.action]: t } : 0);
+    stage.turntable.updateMatrixWorld(true);
+    all.union(new THREE.Box3().setFromObject(model.group));
+  }
+  model.pose(0, 0);
+  const size = all.getSize(new THREE.Vector3());
+  const p = THREE.MathUtils.degToRad(s.pitchDeg);
+  s.viewHeight = Math.max((size.x * (opts.margin ?? 1.12)) / (w / h), (size.y * Math.cos(p) + size.z * Math.sin(p)) * (opts.margin ?? 1.12));
+  stage.pixel.target.copy(all.getCenter(new THREE.Vector3()));
+  stage.pixel.resize();
+  return { stage, model, data };
+}
+const settle = async (stages) => {
+  for (let i = 0; i < 60; i++) { for (const s of stages) s.render(0); await new Promise((r) => requestAnimationFrame(r)); }
+};
+
+if (mode === 'gallery') {
+  const order = Object.keys(NAMES).filter((id) => byId.has(id));
+  const cols = Number(q.get('cols') ?? 4);
+  const sheet = document.getElementById('sheet');
+  sheet.style.gridTemplateColumns = `repeat(${cols}, 300px)`;
+  const stages = [];
+  for (const id of order) {
+    const c = document.createElement('div');
+    c.className = 'cell';
+    sheet.append(c);
+    const { stage, data } = await cell(c, byId.get(id), 300, 220, 3);
+    const label = document.createElement('div');
+    label.className = 'label';
+    const b = document.createElement('b');
+    b.textContent = NAMES[id];
+    const sp = document.createElement('span');
+    sp.textContent = `${data.parts.length} 部件 · ${(JSON.stringify(data).length / 1024).toFixed(1)} KB`;
+    label.append(b, sp);
+    c.append(label);
+    stages.push(stage);
+  }
+  await settle(stages);
+  window.ready = true;
+} else {
+  // 动图：每件一格，开合 0 → 1 → 0，中间停一下；镜头左右轻轻晃
+  document.getElementById('sheet').remove();
+  const strip = document.getElementById('strip');
+  const W = Number(q.get('w') ?? 320), H = Number(q.get('h') ?? 240);
+  const picks = (q.get('items') ?? 'gate:open,briefcase:open,pen:cap').split(',').map((s) => s.split(':')).filter(([id]) => byId.has(id));
+  const cells = [];
+  for (const [id, action] of picks) cells.push({ ...(await cell(strip, byId.get(id), W, H, 2, { action, pitch: 26, margin: 1.05 })), action });
+  await settle(cells.map((c) => c.stage));
+  const N = Number(q.get('frames') ?? 56);
+  const comp = Object.assign(document.createElement('canvas'), { width: W * cells.length, height: H });
+  const g = comp.getContext('2d', { willReadFrequently: true });
+  const frames = [];
+  for (let f = 0; f < N; f++) {
+    // 0–35%：开，35–50%：停，50–85%：合，85–100%：停
+    const u = f / N;
+    const t = u < 0.35 ? u / 0.35 : u < 0.5 ? 1 : u < 0.85 ? 1 - (u - 0.5) / 0.35 : 0;
+    cells.forEach((c, i) => {
+      c.model.pose(0, { [c.action]: t });
+      c.stage.turntable.rotation.y = yawOf(c.data) + Math.sin(u * Math.PI * 2) * 0.18;
+      c.stage.render(0);
+      // 渲染完马上拷：WebGL 的画布不留着上一帧
+      g.drawImage(c.stage.pixel.renderer.domElement, i * W, 0, W, H);
+    });
+    frames.push(g.getImageData(0, 0, comp.width, comp.height).data.slice());
+  }
+  const gif = encodeGif(frames, comp.width, comp.height, Number(q.get('delay') ?? 7));
+  let bin = '';
+  for (let i = 0; i < gif.length; i += 0x8000) bin += String.fromCharCode(...gif.subarray(i, i + 0x8000));
+  window.gif = btoa(bin);
+  window.ready = true;
+}
+</script>
+</body></html>

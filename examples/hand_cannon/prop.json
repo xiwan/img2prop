@@ -1,0 +1,18 @@
+{
+  "id": "hand_cannon",
+  "frame": "side",
+  "origin": [385, 500],
+  "scale": [1041, 0.42],
+  "colors": {
+    "bronze": { "ref": [[600, 300], [600, 410], [300, 380], [1100, 300], [450, 300], [160, 420]], "game": "#56705f" },
+    "wood": { "ref": [[380, 520], [350, 560], [440, 450]], "game": "#4a2c1a" }
+  },
+  "parts": [
+    { "id": "knob", "kind": "ball", "color": "bronze", "box": [115, 330, 152, 395] },
+    { "id": "barrel", "kind": "sweep", "color": "bronze", "box": [140, 240, 1162, 462], "x": [145, 1158], "bore": 30 },
+    { "id": "pivot", "kind": "cyl", "color": "bronze", "at": [424, 392, 70], "r": 40, "len": 16 },
+    { "id": "grip", "kind": "sweep", "color": "wood", "box": [300, 400, 480, 592], "n": 2.5 }
+  ],
+  "sockets": { "muzzle": [1158, 350], "pan": [305, 295] },
+  "game": { "scale": [1.3, 1.3, 1], "grip": "one", "support": [0.05, -0.01, 0.01] }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "keyboard",
+  "frame": "top",
+  "origin": [700, 450],
+  "scale": [64, 0.01905],
+  "colors": {
+    "case":   { "ref": ["#3d3e44", "#26272b", "#4d4e55", "#303136"], "game": "#3d3e44" },
+    "alpha":  { "ref": ["#ece5d3", "#cdc4ab", "#f7f2e6"], "game": "#ece5d3" },
+    "mod":    { "ref": ["#5a83b0", "#43678f", "#7099c4"], "game": "#5a83b0" },
+    "accent": { "ref": ["#e2652f", "#b54c20", "#ef8659"], "game": "#e2652f" }
+  },
+  "parts": [
+    { "id": "case",   "kind": "plate", "color": "case",   "mask": ["*"], "box": [80, 200, 1320, 700], "d": 30, "t": 60 },
+    { "id": "alpha",  "kind": "box",   "color": "alpha",  "box": [100, 230, 1300, 680], "each": true, "taper": 6, "d": 70, "t": 32 },
+    { "id": "mod",    "kind": "box",   "color": "mod",    "box": [100, 230, 1300, 680], "each": true, "taper": 6, "d": 70, "t": 32 },
+    { "id": "accent", "kind": "box",   "color": "accent", "box": [100, 230, 1300, 680], "each": true, "taper": 6, "d": 70, "t": 32 }
+  ],
+  "sockets": { "cable": [700, 218, 30] },
+  "game": { "scale": [1.5, 1.5, 1.5] }
+}

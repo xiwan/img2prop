@@ -1,0 +1,22 @@
+{
+  "name": "img2prop",
+  "version": "0.2.0",
+  "private": true,
+  "license": "MIT",
+  "description": "一张参考图 → 像素风游戏的道具模型（几 KB 的部件数据 + 投影贴图）",
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "test": "node --test runtime/*.test.ts",
+    "examples": "node scripts/prop.mjs examples/*",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "typescript": "^7.0.2"
+  }
+}

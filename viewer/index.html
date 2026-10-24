@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>img2prop 例子</title>
+<style>
+  body { margin: 0; background: #1c1b20; color: #ddd; font: 13px/1.5 system-ui, sans-serif; }
+  header { display: flex; gap: 16px; align-items: center; padding: 10px 14px; background: #141317; position: sticky; top: 0; z-index: 1; }
+  header b { color: #e8c878; font-size: 15px; }
+  header label { display: flex; gap: 6px; align-items: center; }
+  .hint { color: #888; }
+  #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 10px; padding: 10px; }
+  .card { background: #26252c; border-radius: 4px; overflow: hidden; }
+  .card .title { padding: 6px 10px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .card .title span { color: #888; font: 12px ui-monospace, monospace; }
+  .card .title a.name { color: #ddd; font-weight: 700; text-decoration: none; }
+  .card .title a.name:hover { color: #e8c878; text-decoration: underline; }
+  .card .title .pick { margin-left: auto; font-size: 12px; }
+  .stage { position: relative; height: 300px; }
+  .empty { padding: 40px; color: #888; }
+</style></head>
+<body>
+<header>
+  <b>img2prop 例子</b>
+  <label>镜头 <select id="view"></select></label>
+  <label><input type="checkbox" id="tex" checked> 贴图</label>
+  <label>拆开 <input type="range" id="apart" min="0" max="1" step="0.01" value="0"></label>
+  <label>开合 <input type="range" id="open" min="0" max="1" step="0.01" value="0"></label>
+  <label><input type="checkbox" id="spin"> 转</label>
+  <span class="hint">点一件进详情（信息、光照）· 拖画面转 · 开合在每件标题上选动作 · 像素块 3 个页面像素 ·「游戏里的大小」= 画面 7.5 米、270 行（俯视像素游戏的镜头）</span>
+</header>
+<div id="grid"></div>
+<script type="importmap">{ "imports": { "three": "/node_modules/three/build/three.module.js" } }</script>
+<script type="module" src="./viewer.ts"></script>
+</body></html>

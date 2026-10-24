@@ -1,0 +1,16 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>img2prop 生成和审图</title>
+<style>
+  body { margin: 0; background: #1c1b20; color: #ddd; font: 13px/1.5 system-ui, sans-serif; }
+  #sheet { display: inline-block; padding: 12px; background: #1c1b20; }
+  .row { display: flex; gap: 10px; margin-bottom: 10px; }
+  .cell { background: #26252c; padding: 6px; border-radius: 4px; }
+  .cell b { display: block; color: #e8c878; font-weight: 600; margin-bottom: 4px; }
+  .cell img, .cell canvas { display: block; image-rendering: pixelated; }
+  .stage { position: relative; width: 480px; height: 300px; }
+  .stage.small { width: 300px; }
+  .nums { white-space: pre; font: 12px/1.45 ui-monospace, monospace; }
+  .warn { color: #f0a070; }
+</style></head>
+<body><script type="importmap">{ "imports": { "three": "/node_modules/three/build/three.module.js" } }</script>
+<div id="sheet"></div><script type="module" src="./bake.ts"></script></body></html>

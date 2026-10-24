@@ -1,0 +1,47 @@
+{
+  "id": "gate",
+  "frame": "front",
+  "origin": [700, 860],
+  "scale": [800, 4.0],
+  "colors": {
+    "red":    { "ref": ["#b0301f", "#c8452f", "#8a2418", "#962819", "#a02a1b"], "game": "#b0301f" },
+    "frame":  { "ref": ["#5a2418", "#6e3020", "#42190f"], "game": "#5a2418" },
+    "brass":  { "ref": ["#c9a24a", "#f0d48a", "#8a6a26"], "game": "#c9a24a" },
+    "bronze": { "ref": ["#5d7a5e", "#7f9f7c", "#3e5541"], "game": "#5d7a5e" },
+    "board":  { "ref": ["#1f2b3c", "#2c3b50"], "game": "#1f2b3c" },
+    "tile":   { "ref": ["#3e4848", "#57625f", "#2c3434"], "game": "#3e4848" },
+    "stone":  { "ref": ["#8f8c86", "#aaa79f", "#6f6c67"], "game": "#8f8c86" },
+    "iron":   { "ref": ["#ff00ff"], "game": "#2b2b2e" }
+  },
+  "parts": [
+    { "id": "step",      "kind": "box",   "color": "stone", "box": [296, 816, 1104, 864], "d": 40, "t": 200 },
+    { "id": "threshold", "kind": "box",   "color": "frame", "at": [700, 795, 0], "size": [520, 50, 60] },
+    { "id": "postL",     "kind": "box",   "color": "frame", "at": [410, 510, 0], "size": [60, 620, 80] },
+    { "id": "postR",     "kind": "box",   "color": "frame", "at": [990, 510, 0], "size": [60, 620, 80] },
+    { "id": "lintel",    "kind": "box",   "color": "frame", "at": [700, 205, 0], "size": [680, 70, 80] },
+    { "id": "header",    "kind": "box",   "color": "frame", "at": [700, 115, -10], "size": [680, 110, 60] },
+    { "id": "plaque",    "kind": "box",   "color": "board", "mask": ["*"], "box": [536, 74, 864, 156], "d": 25, "t": 10, "paint": true },
+    { "id": "eave",      "kind": "plate", "color": "tile",  "box": [316, 24, 1084, 64], "t": 140 },
+    { "id": "peg",       "kind": "cyl",   "color": "brass", "box": [360, 170, 1040, 240], "each": true, "dir": "w", "len": 40, "d": 60, "seg": 8 },
+
+    { "id": "leafL", "kind": "box", "color": "red", "mask": ["*"], "box": [440, 240, 700, 770], "t": 20,
+      "open": { "pivot": [440, 505, -10], "axis": "v", "deg": 90, "span": [0.2, 1] } },
+    { "id": "leafR", "kind": "box", "color": "red", "mask": ["*"], "box": [700, 240, 960, 770], "t": 20,
+      "open": { "pivot": [960, 505, -10], "axis": "v", "deg": -90, "span": [0.2, 1] } },
+    { "id": "studL", "kind": "cyl", "color": "brass", "box": [440, 240, 700, 770], "each": true, "dir": "w", "len": 10, "d": 15, "seg": 6, "on": "leafL" },
+    { "id": "studR", "kind": "cyl", "color": "brass", "box": [700, 240, 960, 770], "each": true, "dir": "w", "len": 10, "d": 15, "seg": 6, "on": "leafR" },
+
+    { "id": "knockerL", "kind": "cyl",  "color": "bronze", "at": [668, 492], "r": 30, "dir": "w", "len": 8, "d": 14, "seg": 16, "on": "leafL" },
+    { "id": "knockerR", "kind": "cyl",  "color": "bronze", "at": [732, 492], "r": 30, "dir": "w", "len": 8, "d": 14, "seg": 16, "on": "leafR" },
+    { "id": "ringL",    "kind": "ring", "color": "bronze", "box": [636, 523, 700, 584], "tube": 7, "d": 20, "on": "knockerL",
+      "open": { "name": "knock", "pivot": [668, 528, 20], "axis": "u", "deg": -70 } },
+    { "id": "ringR",    "kind": "ring", "color": "bronze", "box": [700, 523, 764, 584], "tube": 7, "d": 20, "on": "knockerR",
+      "open": { "name": "knock", "pivot": [732, 528, 20], "axis": "u", "deg": -70 } },
+
+    { "id": "boltGuide", "kind": "box", "color": "iron", "at": [645, 505, -16], "size": [20, 40, 12], "on": "leafL" },
+    { "id": "boltCatch", "kind": "box", "color": "iron", "at": [755, 505, -16], "size": [20, 40, 12], "on": "leafR" },
+    { "id": "bolt",      "kind": "box", "color": "iron", "at": [700, 505, -24], "size": [150, 18, 14], "on": "leafL",
+      "open": { "move": [-80, 0, 0], "span": [0, 0.2] } }
+  ],
+  "sockets": { "inside": [700, 770, -200], "ringL": [668, 552, 20], "ringR": [732, 552, 20] }
+}

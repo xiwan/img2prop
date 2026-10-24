@@ -1,0 +1,28 @@
+{
+  "id": "three_eyed",
+  "frame": "side",
+  "origin": [220, 376],
+  "scale": [1106, 0.8],
+  "colors": {
+    "wood": { "ref": [[200, 385], [250, 405], [150, 365], [200, 352], [300, 380]], "game": "#4a2c1a" },
+    "iron": { "ref": [[600, 420], [480, 410], [900, 330], [900, 410], [900, 300], [620, 310]], "game": "metal" },
+    "brass": { "ref": [[690, 360], [728, 400], [1060, 330]], "game": "#b08a40" },
+    "steel": { "ref": [[449, 380], [92, 400], [1172, 360]], "game": "#6a6c72" }
+  },
+  "parts": [
+    { "id": "handle", "kind": "sweep", "color": "wood", "mask": ["*"], "box": [96, 320, 352, 445], "x": [96, 352] },
+    { "id": "buttRing", "kind": "lathe", "color": "steel", "mask": ["steel", "iron"], "box": [80, 315, 102, 440] },
+    { "id": "socket", "kind": "sweep", "color": "iron", "mask": ["iron", "steel"], "box": [335, 280, 458, 450], "x": [345, 452], "top": [[350, 342], [400, 322]] },
+    { "id": "touchHole", "kind": "ball", "color": "iron", "mask": ["iron", "steel"], "box": [356, 292, 396, 334], "d": 0 },
+    { "id": "ring", "kind": "lathe", "color": "steel", "mask": ["steel", "iron"], "box": [440, 270, 460, 450] },
+    { "id": "chamber", "kind": "lathe", "color": "iron", "mask": ["iron", "steel"], "box": [455, 270, 745, 450], "x": [455, 742] },
+    { "id": "boss", "kind": "ball", "color": "steel", "at": [560, 395, 70], "size": [20, 20, 10] },
+    { "id": "band1", "kind": "lathe", "color": "brass", "box": [676, 262, 704, 452] },
+    { "id": "band2", "kind": "lathe", "color": "brass", "box": [714, 262, 742, 452] },
+    { "id": "barrelTop", "kind": "lathe", "color": "iron", "mask": ["iron", "steel"], "box": [736, 260, 1185, 360], "x": [736, 1182], "edge": "top", "bore": 17 },
+    { "id": "barrelLow", "kind": "lathe", "color": "iron", "mask": ["iron", "steel"], "box": [736, 360, 1185, 460], "x": [736, 1182], "edge": "bottom", "bore": 17, "d": 34, "mirror": true },
+    { "id": "band3", "kind": "lathe", "color": "brass", "box": [1042, 258, 1078, 455] }
+  ],
+  "sockets": { "muzzle": [1182, 360], "pan": [376, 300] },
+  "game": { "scale": [1.2, 1.2, 1], "grip": "two", "support": [0, 0, 0.3] }
+}
